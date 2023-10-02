@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="container mx-auto">
+    <table>
+        <thead>
+        <tr>
+            <th>
+               id
+            </th>
+
+            <th>
+                name
+            </th>
+
+            <th>
+                salary
+            </th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="employees:${employee}">
+            <td th:text="${employees.getId()}"></td>
+            <td th:text="${employees.getName()}"></td>
+            <td th:text="${employees.getSalary()}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

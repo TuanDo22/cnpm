@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Styled Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+<div class="container mx-auto my-8 mt-10">
+    <p>Danh sách các công ty</p>
+    <div>
+        <a th:href="@{/listCompany/new}">Thêm danh sách các công ty</a>
+    </div>
+    <div th:if = "${message}" >
+        [[${message}]]
+
+    </div>
+    <div>
+        <form th:action="@{/search}">
+            Filter:
+            <input type="text" name="keyword" class="border border-black" th:value="${keyword}" />
+            <input type="submit" value="search" />
+        </form>
+    </div>
+
+    <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
+        <thead class="bg-gray-200">
+        <tr>
+            <th class="py-2 px-4 border-b text-left">ID</th>
+            <th class="py-2 px-4 border-b text-left">Name</th>
+            <th class="py-2 px-4 border-b text-left">Tax Code</th>
+            <th class="py-2 px-4 border-b text-left">Authorized Capital</th>
+            <th class="py-2 px-4 border-b text-left">Phone Number</th>
+            <th class="py-2 px-4 border-b text-left">Employees</th>
+            <th class="py-2 px-4 border-b text-left">Sum of Rented Area</th>
+            <th class="py-2 px-4 border-b text-left">View Employees</th>
+            <th class="py-2 px-4 border-b text-left">Sửa</th>
+            <th class="py-2 px-4 border-b text-left">Xóa</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="item : ${list}">
+            <td class="py-2 px-4 border-b text-left" th:text="${item.getId()}"></td>
+            <td class="py-2 px-4 border-b text-left" th:text="${item.getName()}"></td>
+            <td class="py-2 px-4 border-b text-left" th:text="${item.getTaxcode()}"></td>
+            <td class="py-2 px-4 border-b text-left" th:text="${item.getAuthorized()}"></td>
+            <td class="py-2 px-4 border-b text-left" th:text="${item.getPhone()}"></td>
+            <td class="py-2 px-4 border-b text-left" th:text="${item.getEmployee()}"></td>
+            <td class="py-2 px-4 border-b text-left" th:text="${item.getSum()}"></td>
+            <td class="py-2 px-4 border-b text-left">
+                <a th:href="@{/view/{id}(id=${item.id})}">xem</a>
+            </td>
+            <td class="py-2 px-4 border-b text-left">
+                <a th:href="@{/fix/{id}(id=${item.id})}">sua</a>
+            </td>
+            <td class="py-2 px-4 border-b text-left">
+                <a th:href="@{/delete/{id}(id=${item.id})}">xoa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>
