@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="html" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Styled Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+
+<table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
+    <thead class="bg-gray-200">
+    <tr>
+        <th class="py-2 px-4 border-b text-left">ID</th>
+        <th class="py-2 px-4 border-b text-left">Name</th>
+        <th class="py-2 px-4 border-b text-left">Salary</th>
+        <th class="py-2 px-4 border-b text-left">Phone</th>
+        <th class="py-2 px-4 border-b text-left">Location</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="item : ${employee}">
+        <!--/*@thymesVar id="g" type=""*/-->
+        <td class="py-2 px-4 border-b text-left"  th:text="${item.getId()}"></td>
+        <td class="py-2 px-4 border-b text-left"  th:text="${item.getName()}"></td>
+        <td class="py-2 px-4 border-b text-left"  th:text="${item.getSalary()}"></td>
+        <td class="py-2 px-4 border-b text-left"  th:text="${item.getPhone()}"></td>
+        <td class="py-2 px-4 border-b text-left"  th:text="${item.getLocation()}"></td>
+        <td class="py-2 px-4 border-b text-left" >
+            <a th:href="@{/delete1/{id}(id=${item.id})}">Delete</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="html" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Styled Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div>
+    <a th:href="@{/service/new}">Thêm dịch vụ : </a>
+</div>
+<table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
+    <thead class="bg-gray-200">
+    <tr>
+        <th class="py-2 px-4 border-b text-left">ID</th>
+        <th class="py-2 px-4 border-b text-left">Name</th>
+        <th class="py-2 px-4 border-b text-left">Code</th>
+        <th class="py-2 px-4 border-b text-left">Type</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="item : ${listService}">
+        <!--/*@thymesVar id="g" type=""*/-->
+        <td class="py-2 px-4 border-b text-left"  th:text="${item.getId()}"></td>
+        <td class="py-2 px-4 border-b text-left"  th:text="${item.getName()}"></td>
+        <td class="py-2 px-4 border-b text-left"  th:text="${item.getCode()}"></td>
+        <td class="py-2 px-4 border-b text-left"  th:text="${item.getType()}"></td>
+        <td class="py-2 px-4 border-b text-left" >
+            <a th:href="@{/deleteID/{id}(id=${item.id})}">Delete</a>
+        </td>
+        <td class="py-2 px-4 border-b text-left" >
+            <a th:href="@{/fixID/{id}(id=${item.id})}">Sửa</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

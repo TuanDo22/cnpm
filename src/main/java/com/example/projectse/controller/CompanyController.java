@@ -1,8 +1,8 @@
 package com.example.projectse.controller;
 
-import com.example.projectse.dto.ListCompany;
+import com.example.projectse.entity.ListCompany;
 import com.example.projectse.reponsitory.CompanyRepository;
-import com.example.projectse.service.CompanyService;
+import com.example.projectse.service.impl.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-@Controller("CompanyController")
+@Controller
 public class CompanyController {
     @Autowired
     private CompanyRepository companyRepository;
@@ -58,6 +58,10 @@ public class CompanyController {
         model.addAttribute("list" , listCompanies);
         model.addAttribute("keyword" , keyword);
         return "listCompany";
+    }
+    @GetMapping("/type")
+    public String type(){
+        return "type";
     }
 
 

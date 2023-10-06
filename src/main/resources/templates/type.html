@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
+    <thead class="bg-gray-200">
+    <tr>
+        <th class="py-2 px-4 border-b text-left">Type : 1</th>
+        <th class="py-2 px-4 border-b text-left">Type : 2 </th>
+        <th class="py-2 px-4 border-b text-left">Type : 3 </th>
+        <th class="py-2 px-4 border-b text-left">Type : 4 </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <!--/*@thymesVar id="g" type=""*/-->
+        <td class="py-2 px-4 border-b text-left"> 0đ - 100000đ </td>
+        <td class="py-2 px-4 border-b text-left"> 100000đ - 200000đ  </td>
+        <td class="py-2 px-4 border-b text-left"> 200000đ - 300000đ </td>
+        <td class="py-2 px-4 border-b text-left"> 300000đ - 1000000đ</td>
+
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

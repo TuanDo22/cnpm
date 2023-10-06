@@ -1,14 +1,20 @@
-package com.example.projectse.dto;
+package com.example.projectse.entity;
 
+import com.example.projectse.entity.EmployeeCompany;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Generated;
+import lombok.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "list")
 @Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ListCompany {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +25,8 @@ public class ListCompany {
     private int phone;
     private int employee;
     private int sum;
-    @OneToMany(mappedBy = "employeeCompanies" , fetch = FetchType.LAZY)
-    private Collection<EmployeeCompany> employeeCompanies;
+    @OneToMany(mappedBy = "employeeCompanies",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<EmployeeCompany> employeeCompanies;
 
 
 }

@@ -10,13 +10,17 @@
 <body class="bg-gray-100">
 
 <div class="container mx-auto my-8 mt-10">
-    <p>Danh sách các công ty</p>
     <div>
-        <a th:href="@{/listCompany/new}">Thêm danh sách các công ty</a>
+        <a class="py-2 px-4 border-b text-left" th:href="@{/type}" >Bảng giá dịch vụ</a>
+    </div>
+    <div>
+        <a th:href="@{/service}" class="py-2 px-4 border-b text-left" >Dịch Vu</a>
+    </div>
+    <div>
+        <a th:href="@{/listCompany/new}">Thêm danh sách các công ty : </a>
     </div>
     <div th:if = "${message}" >
         [[${message}]]
-
     </div>
     <div>
         <form th:action="@{/search}">
@@ -25,7 +29,7 @@
             <input type="submit" value="search" />
         </form>
     </div>
-
+    <p>Danh sách các công ty</p>
     <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
         <thead class="bg-gray-200">
         <tr>
