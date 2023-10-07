@@ -63,6 +63,4 @@ public class CompanyController {
     public String type(){
         return "type";
     }
-
-
 }
