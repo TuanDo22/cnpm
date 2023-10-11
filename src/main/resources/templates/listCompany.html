@@ -2,76 +2,75 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
     <title>Styled Table</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-100">
-
-<div class="container mx-auto my-8 mt-10">
-    <div>
-        <a th:href="@{/login}" class="py-2 px-4 border-b text-left" >Logout</a>
-    </div>
-    <div>
-        <a class="py-2 px-4 border-b text-left" th:href="@{/type}" >Bảng giá dịch vụ</a>
-    </div>
-    <div>
-        <a th:href="@{/service}" class="py-2 px-4 border-b text-left" >Dịch Vu</a>
-    </div>
-    <div>
-        <a th:href="@{/listCompany/new}">Thêm danh sách các công ty : </a>
-    </div>
-    <div th:if = "${message}" >
-        [[${message}]]
-    </div>
-    <div>
-        <form th:action="@{/search}">
-            Filter:
-            <input type="text" name="keyword" class="border border-black" th:value="${keyword}" />
-            <input type="submit" value="search" />
+<body>
+<div class=" min-h-screen bg-[url('bg.jpg')] bg-center bg-cover px-28 py-5 relative">
+    <nav class="flex items-center text-2xl -space-x-44">
+        <img src="logo.png" class="w-40 cursor-pointer">
+        <ul class="flex-1 text-center">
+            <li class="list-none inline-block px-5"><a th:href="@{/type}" class="no-underline text-black px-2">Bảng giá dịch vụ</a></li>
+            <li class="list-none inline-block px-5"><a th:href="@{/service}" class="no-underline text-black px-2">Dịch vụ</a></li>
+            <div class="absolute top-6 right-7 mt-4 mr-6">
+                <a th:href="@{/login}" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                    Log Out
+                </a>
+            </div>
+        </ul>
+    </nav>
+    <div class="max-w-4xl mx-auto p-4">
+        <form th:action="@{/search}" class="flex items-center relative">
+            <input class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-full shadow-md"
+                   type="text" name="keyword" th:value="${keyword}" placeholder="Tìm kiếm...">
+            <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
+                <svg class="h-4 w-4 fill-current text-gray-500" viewBox="0 0 20 20">
+                    <circle cx="8.5" cy="8.5" r="7.5" stroke="currentColor" fill="none" />
+                    <line x1="13.5" y1="13.5" x2="18" y2="18" stroke="currentColor" />
+                </svg>
+            </button>
         </form>
     </div>
-    <p>Danh sách các công ty</p>
-    <table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
-        <thead class="bg-gray-200">
-        <tr>
-            <th class="py-2 px-4 border-b text-left">ID</th>
-            <th class="py-2 px-4 border-b text-left">Name</th>
-            <th class="py-2 px-4 border-b text-left">Tax Code</th>
-            <th class="py-2 px-4 border-b text-left">Authorized Capital</th>
-            <th class="py-2 px-4 border-b text-left">Phone Number</th>
-            <th class="py-2 px-4 border-b text-left">Employees</th>
-            <th class="py-2 px-4 border-b text-left">Sum of Rented Area</th>
-            <th class="py-2 px-4 border-b text-left">View Employees</th>
-            <th class="py-2 px-4 border-b text-left">Sửa</th>
-            <th class="py-2 px-4 border-b text-left">Xóa</th>
-        </tr>
-        </thead>
 
-        <tbody>
-        <tr th:each="item : ${list}">
-            <td class="py-2 px-4 border-b text-left" th:text="${item.getId()}"></td>
-            <td class="py-2 px-4 border-b text-left" th:text="${item.getName()}"></td>
-            <td class="py-2 px-4 border-b text-left" th:text="${item.getTaxcode()}"></td>
-            <td class="py-2 px-4 border-b text-left" th:text="${item.getAuthorized()}"></td>
-            <td class="py-2 px-4 border-b text-left" th:text="${item.getPhone()}"></td>
-            <td class="py-2 px-4 border-b text-left" th:text="${item.getEmployee()}"></td>
-            <td class="py-2 px-4 border-b text-left" th:text="${item.getSum()}"></td>
-            <td class="py-2 px-4 border-b text-left">
-                <a th:href="@{/view/{id}(id=${item.id})}">xem</a>
-            </td>
-            <td class="py-2 px-4 border-b text-left">
-                <a th:href="@{/fix/{id}(id=${item.id})}">sua</a>
-            </td>
-            <td class="py-2 px-4 border-b text-left">
-                <a th:href="@{/delete/{id}(id=${item.id})}">xoa</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
+
+
+    <div class="flex justify-center items-center mt-44">
+        <table class="shadow-2xl font-[Poppins] border-2 border-cyan-200 w-2 overflow-hidden">
+            <thead class="text-black">
+            <tr>
+                <th class="py-3 px-8 bg-green-950">ID</th>
+                <th class="py-3 px-8 bg-green-950">NAME</th>
+                <th class="py-3 px-8 bg-green-950">TAX CODE</th>
+                <th class="py-3 px-8 bg-green-950">AUTHORIZED CAPITAL</th>
+                <th class="py-3 px-8 bg-green-950">PHONE NUMBER</th>
+                <th class="py-3 px-8 bg-green-950">EMPLOYEES</th>
+                <th class="py-3 px-8 bg-green-950">SUM OF RENTED AREA</th>
+                <th class="py-3 px-8 bg-green-950">VIEW EMPLOYEES</th>
+                <th class="py-3 px-8 bg-green-950">SỬA</th>
+                <th class="py-3 px-8 bg-green-950">XÓA</th>
+            </tr>
+            </thead>
+            <tbody class="text-cyan-900 text-center">
+            <tr th:each="item : ${list} " class="hover:bg-cyan-100 hover:scale-105 bg-cyan-200 cursor-pointer duration-300">
+                <td class="py-3 px-6" th:text="${item.getId()}"></td>
+                <td class="py-3 px-6" th:text="${item.getName()}"></td>
+                <td class="py-3 px-6" th:text="${item.getTaxcode()}"></td>
+                <td class="py-3 px-6" th:text="${item.getAuthorized()}"></td>
+                <td class="py-3 px-6" th:text="${item.getPhone()}"></td>
+                <td class="py-3 px-6"  th:text="${item.getEmployee()}"></td>
+                <td class="py-3 px-6" th:text="${item.getSum()}"></td>
+                <td class="py-3 px-6"><a  th:href="@{/view/{id}(id=${item.id})}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">XEM</a></td>
+                <td class="py-3 px-6"><a th:href="@{/fix/{id}(id=${item.id})}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">SỬA</a></td>
+                <td class="py-3 px-6"><a th:href="@{/delete/{id}(id=${item.id})}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">XÓA</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-
 </body>
 
 </html>

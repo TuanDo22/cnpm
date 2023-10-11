@@ -3,36 +3,42 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Styled Table</title>
+    <title>Styled Employee Table</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
 
-<table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
-    <thead class="bg-gray-200">
-    <tr>
-        <th class="py-2 px-4 border-b text-left">ID</th>
-        <th class="py-2 px-4 border-b text-left">Name</th>
-        <th class="py-2 px-4 border-b text-left">Salary</th>
-        <th class="py-2 px-4 border-b text-left">Phone</th>
-        <th class="py-2 px-4 border-b text-left">Location</th>
-    </tr>
-    </thead>
+<body class="min-h-screen bg-[url('bg.jpg')] bg-center bg-cover px-28 py-5 relative">
+<nav class="flex items-center text-2xl space-x-4">
+    <img src="logo.png" class="w-40 cursor-pointer">
+    <ul class="flex-1 text-center"></ul>
+</nav>
 
-    <tbody>
-    <tr th:each="item : ${employee}">
-        <!--/*@thymesVar id="g" type=""*/-->
-        <td class="py-2 px-4 border-b text-left"  th:text="${item.getId()}"></td>
-        <td class="py-2 px-4 border-b text-left"  th:text="${item.getName()}"></td>
-        <td class="py-2 px-4 border-b text-left"  th:text="${item.getSalary()}"></td>
-        <td class="py-2 px-4 border-b text-left"  th:text="${item.getPhone()}"></td>
-        <td class="py-2 px-4 border-b text-left"  th:text="${item.getLocation()}"></td>
-        <td class="py-2 px-4 border-b text-left" >
-            <a th:href="@{/delete1/{id}(id=${item.id})}">Delete</a>
-        </td>
-
-    </tr>
-    </tbody>
-</table>
+<div class="flex justify-center items-center mt-12">
+    <table class="shadow-2xl font-[Poppins] border-2 border-cyan-200 w-2 overflow-hidden">
+        <thead class="text-black">
+        <tr>
+            <th class="py-3 px-6 bg-blue-950">ID</th>
+            <th class="py-3 px-6 bg-blue-950">NAME</th>
+            <th class="py-3 px-6 bg-blue-950">SALARY</th>
+            <th class="py-3 px-6 bg-blue-950">PHONE</th>
+            <th class="py-3 px-6 bg-blue-950">LOCATION</th>
+            <th class="py-3 px-6 bg-blue-950">DELETE</th>
+        </tr>
+        </thead>
+        <tbody class="text-cyan-900 text-center">
+        <tr th:each="item : ${employee}" class="hover:bg-blue-100 bg-blue-200 cursor-pointer duration-300">
+            <td class="py-3 px-6" th:text="${item.getId()}"></td>
+            <td class="py-3 px-6" th:text="${item.getName()}"></td>
+            <td class="py-3 px-6" th:text="${item.getSalary()}"></td>
+            <td class="py-3 px-6" th:text="${item.getPhone()}"></td>
+            <td class="py-3 px-6" th:text="${item.getLocation()}"></td>
+            <td class="py-3 px-6">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">DELETE</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
+
 </html>

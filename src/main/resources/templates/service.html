@@ -1,41 +1,44 @@
 <!DOCTYPE html>
-<html lang="html" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Styled Table</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
 </head>
 <body>
-<div>
-    <a th:href="@{/service/new}">Thêm dịch vụ : </a>
-</div>
-<table class="min-w-full bg-white border border-gray-300 shadow-sm rounded-lg">
-    <thead class="bg-gray-200">
-    <tr>
-        <th class="py-2 px-4 border-b text-left">ID</th>
-        <th class="py-2 px-4 border-b text-left">Name</th>
-        <th class="py-2 px-4 border-b text-left">Code</th>
-        <th class="py-2 px-4 border-b text-left">Type</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr th:each="item : ${listService}">
-        <!--/*@thymesVar id="g" type=""*/-->
-        <td class="py-2 px-4 border-b text-left"  th:text="${item.getId()}"></td>
-        <td class="py-2 px-4 border-b text-left"  th:text="${item.getName()}"></td>
-        <td class="py-2 px-4 border-b text-left"  th:text="${item.getCode()}"></td>
-        <td class="py-2 px-4 border-b text-left"  th:text="${item.getType()}"></td>
-        <td class="py-2 px-4 border-b text-left" >
-            <a th:href="@{/deleteID/{id}(id=${item.id})}">Delete</a>
-        </td>
-        <td class="py-2 px-4 border-b text-left" >
-            <a th:href="@{/fixID/{id}(id=${item.id})}">Sửa</a>
-        </td>
-
-    </tr>
-    </tbody>
-</table>
+<div class=" min-h-screen bg-[url('bg.jpg')] bg-center bg-cover px-28 py-5 relative">
+    <nav class="flex items-center text-2xl -space-x-44">
+        <img src="logo.png" class="w-40 cursor-pointer">
+    </nav>
+    <div class="mb-4">
+        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" th:href="@{/service/new}">Thêm dịch vụ</a>
+    </div>
+    <div class=" flex justify-center items-center mt-44">
+        <table class="  shadow-2xl font-[Poppins] border-2 border-blue-200 w-2 overflow-hidden ">
+            <thead class="text-white">
+            <tr>
+                <th class="py-3 px-28 bg-blue-950">ID</th>
+                <th class="py-3 px-28 bg-blue-950">NAME</th>
+                <th class="py-3 px-28 bg-blue-950">CODE</th>
+                <th class="py-3 px-28 bg-blue-950">TYPE</th>
+                <th class="py-3 px-28 bg-blue-950">DELETE</th>
+                <th class="py-3 px-28 bg-blue-950">EDIT</th>
+            </tr>
+            </thead>
+            <tbody class="text-cyan-900 text-center">
+            <tr th:each="item : ${listService}"  class="hover:bg-blue-100 bg-blue-200 cursor-pointer duration-300">
+                <td class="py-3 px-6" th:text="${item.getId()}" ></td>
+                <td class="py-3 px-6" th:text="${item.getName()}"></td>
+                <td class="py-3 px-6" th:text="${item.getCode()}"></td>
+                <td class="py-3 px-6" th:text="${item.getType()}"></td>
+                <td class="py-3 px-6"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl" th:href="@{/deleteID/{id}(id=${item.id})}">XÓA</button></td>
+                <td class="py-3 px-6"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl" th:href="@{/fixID/{id}(id=${item.id})}">SỬA</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
 </body>
 </html>
